@@ -269,6 +269,8 @@ var DatetimeTimePicker = {render: function(){var _vm=this;var _h=_vm.$createElem
 
       return hours(this.hourStep).filter(function (hour) {
         if (!this$1.use12Hour) {
+          console.log(this$1.startHour);
+          console.log(this$1.endHour);
           if (this$1.startHour && this$1.endHour) {
             return this$1.checkHour(hour)
           } else {
@@ -312,18 +314,21 @@ var DatetimeTimePicker = {render: function(){var _vm=this;var _h=_vm.$createElem
 
   methods: {
     checkHour: function checkHour (hour) {
+      var result;
       var hourInt = parseInt(hour);
       if (hourInt < parseInt(this.startHour) || hourInt > parseInt(this.endHour)) {
-        return false
+        result = false;
       } else {
-        return true
+        result = true;
       }
+      console.log('result: ', result);
+      return result
     },
     selectHour: function selectHour (hour) {
+      console.log('hour:', hour);
       if (hour.disabled) {
         return
       }
-
       this.$emit('change', { hour: parseInt(hour.number) });
     },
     selectMinute: function selectMinute (minute) {
@@ -411,7 +416,7 @@ var KEY_TAB = 9;
 var KEY_ENTER = 13;
 var KEY_ESC = 27;
 
-var DatetimePopup = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vdatetime-popup"},[_c('div',{staticClass:"vdatetime-popup__header"},[_c('div',{staticClass:"vdatetime-popup__year",on:{"click":_vm.showYear}},[_vm._v(_vm._s(_vm.year))]),_vm._v(" "),_c('div',{staticClass:"vdatetime-popup__date"},[_vm._v(_vm._s(_vm.dateFormatted))])]),_vm._v(" "),_c('div',{staticClass:"vdatetime-popup__body"},[(_vm.step === 'year')?_c('datetime-year-picker',{attrs:{"year":_vm.year},on:{"change":_vm.onChangeYear}}):_vm._e(),_vm._v(" "),(_vm.step === 'date')?_c('datetime-calendar',{attrs:{"year":_vm.year,"month":_vm.month,"day":_vm.day,"min-date":_vm.minDatetime,"max-date":_vm.maxDatetime,"week-start":_vm.weekStart},on:{"change":_vm.onChangeDate}}):_vm._e(),_vm._v(" "),(_vm.step === 'time')?_c('datetime-time-picker',{attrs:{"hour":_vm.hour,"minute":_vm.minute,"use12-hour":_vm.use12Hour,"hour-step":_vm.hourStep,"start-hour":_vm.startHour,"end-hour":_vm.endhour,"minute-step":_vm.minuteStep,"min-time":_vm.minTime,"max-time":_vm.maxTime},on:{"change":_vm.onChangeTime}}):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"vdatetime-popup__actions"},[_c('div',{staticClass:"vdatetime-popup__actions__button vdatetime-popup__actions__button--cancel",on:{"click":_vm.cancel}},[_vm._v(_vm._s(_vm.phrases.cancel))]),_vm._v(" "),_c('div',{staticClass:"vdatetime-popup__actions__button vdatetime-popup__actions__button--confirm",on:{"click":_vm.confirm}},[_vm._v(_vm._s(_vm.phrases.ok))])])])},staticRenderFns: [],
+var DatetimePopup = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vdatetime-popup"},[_c('div',{staticClass:"vdatetime-popup__header"},[_c('div',{staticClass:"vdatetime-popup__year",on:{"click":_vm.showYear}},[_vm._v(_vm._s(_vm.year))]),_vm._v(" "),_c('div',{staticClass:"vdatetime-popup__date"},[_vm._v(_vm._s(_vm.dateFormatted))])]),_vm._v(" "),_c('div',{staticClass:"vdatetime-popup__body"},[(_vm.step === 'year')?_c('datetime-year-picker',{attrs:{"year":_vm.year},on:{"change":_vm.onChangeYear}}):_vm._e(),_vm._v(" "),(_vm.step === 'date')?_c('datetime-calendar',{attrs:{"year":_vm.year,"month":_vm.month,"day":_vm.day,"min-date":_vm.minDatetime,"max-date":_vm.maxDatetime,"week-start":_vm.weekStart},on:{"change":_vm.onChangeDate}}):_vm._e(),_vm._v(" "),(_vm.step === 'time')?_c('datetime-time-picker',{attrs:{"hour":_vm.hour,"minute":_vm.minute,"use12-hour":_vm.use12Hour,"hour-step":_vm.hourStep,"start-hour":_vm.startHour,"end-hour":_vm.endHour,"minute-step":_vm.minuteStep,"min-time":_vm.minTime,"max-time":_vm.maxTime},on:{"change":_vm.onChangeTime}}):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"vdatetime-popup__actions"},[_c('div',{staticClass:"vdatetime-popup__actions__button vdatetime-popup__actions__button--cancel",on:{"click":_vm.cancel}},[_vm._v(_vm._s(_vm.phrases.cancel))]),_vm._v(" "),_c('div',{staticClass:"vdatetime-popup__actions__button vdatetime-popup__actions__button--confirm",on:{"click":_vm.confirm}},[_vm._v(_vm._s(_vm.phrases.ok))])])])},staticRenderFns: [],
   components: {
     DatetimeCalendar: DatetimeCalendar,
     DatetimeTimePicker: DatetimeTimePicker,
@@ -468,7 +473,7 @@ var DatetimePopup = {render: function(){var _vm=this;var _h=_vm.$createElement;v
       type: String,
       default: null
     },
-    endhour: {
+    endHour: {
       type: String,
       default: null
     }

@@ -60,6 +60,8 @@ export default {
     hours () {
       return hours(this.hourStep).filter(hour => {
         if (!this.use12Hour) {
+          console.log(this.startHour)
+          console.log(this.endHour)
           if (this.startHour && this.endHour) {
             return this.checkHour(hour)
           } else {
@@ -101,18 +103,21 @@ export default {
 
   methods: {
     checkHour (hour) {
+      let result
       const hourInt = parseInt(hour)
       if (hourInt < parseInt(this.startHour) || hourInt > parseInt(this.endHour)) {
-        return false
+        result = false
       } else {
-        return true
+        result = true
       }
+      console.log('result: ', result)
+      return result
     },
     selectHour (hour) {
+      console.log('hour:', hour)
       if (hour.disabled) {
         return
       }
-
       this.$emit('change', { hour: parseInt(hour.number) })
     },
     selectMinute (minute) {

@@ -27,7 +27,7 @@
           :use12-hour="use12Hour"
           :hour-step="hourStep"
           :start-hour="startHour"
-          :end-hour="endhour"
+          :end-hour="endHour"
           :minute-step="minuteStep"
           :min-time="minTime"
           :max-time="maxTime"></datetime-time-picker>
@@ -107,7 +107,7 @@ export default {
       type: String,
       default: null
     },
-    endhour: {
+    endHour: {
       type: String,
       default: null
     }
