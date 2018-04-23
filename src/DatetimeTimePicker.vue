@@ -60,7 +60,7 @@ export default {
     hours () {
       return hours(this.hourStep).filter(hour => {
         if (!this.use12Hour) {
-          if(this.startHour && this.endHour) {
+          if (this.startHour && this.endHour) {
             return this.checkHour(hour)
           } else {
             return true
@@ -100,9 +100,9 @@ export default {
   },
 
   methods: {
-    checkHour(hour) {
-      let hourInt = parseInt(hour)
-      if(hourInt < parseInt(this.startHour) || hourInt > parseInt(this.endHour)) {
+    checkHour (hour) {
+      const hourInt = parseInt(hour)
+      if (hourInt < parseInt(this.startHour) || hourInt > parseInt(this.endHour)) {
         return false
       } else {
         return true

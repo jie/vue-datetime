@@ -110,7 +110,7 @@ export default {
     endhour: {
       type: String,
       default: null
-    },
+    }
   },
 
   data () {
