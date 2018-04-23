@@ -21,6 +21,8 @@
           :minute-step="minuteStep"
           :min-datetime="popupMinDatetime"
           :max-datetime="popupMaxDatetime"
+          :start-hour="startHour"
+          :end-hour="endHour"
           @confirm="confirm"
           @cancel="cancel"
           :auto="auto"
@@ -89,6 +91,14 @@ export default {
       default: null
     },
     maxDatetime: {
+      type: String,
+      default: null
+    },
+    startHour: {
+      type: String,
+      default: null
+    },
+    endHour: {
       type: String,
       default: null
     },

@@ -45,6 +45,14 @@ export default {
     maxTime: {
       type: String,
       default: null
+    },
+    startHour: {
+      type: String,
+      default: null
+    },
+    endHour: {
+      type: String,
+      default: null
     }
   },
 
@@ -52,7 +60,11 @@ export default {
     hours () {
       return hours(this.hourStep).filter(hour => {
         if (!this.use12Hour) {
-          return true
+          if(this.startHour && this.endHour) {
+            return this.checkHour(hour)
+          } else {
+            return true
+          }
         } else {
           if (this.hour < 12) {
             return hour < 12
@@ -88,6 +100,14 @@ export default {
   },
 
   methods: {
+    checkHour(hour) {
+      let hourInt = parseInt(hour)
+      if(hourInt < parseInt(this.startHour) || hourInt > parseInt(this.endHour)) {
+        return false
+      } else {
+        return true
+      }
+    },
     selectHour (hour) {
       if (hour.disabled) {
         return

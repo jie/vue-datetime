@@ -26,6 +26,8 @@
           :minute="minute"
           :use12-hour="use12Hour"
           :hour-step="hourStep"
+          :start-hour="startHour"
+          :end-hour="endhour"
           :minute-step="minuteStep"
           :min-time="minTime"
           :max-time="maxTime"></datetime-time-picker>
@@ -100,7 +102,15 @@ export default {
     weekStart: {
       type: Number,
       default: 1
-    }
+    },
+    startHour: {
+      type: String,
+      default: null
+    },
+    endhour: {
+      type: String,
+      default: null
+    },
   },
 
   data () {
