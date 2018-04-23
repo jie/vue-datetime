@@ -60,8 +60,6 @@ export default {
     hours () {
       return hours(this.hourStep).filter(hour => {
         if (!this.use12Hour) {
-          console.log(this.startHour)
-          console.log(this.endHour)
           if (this.startHour && this.endHour) {
             return this.checkHour(hour)
           } else {

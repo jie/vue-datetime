@@ -269,8 +269,6 @@ var DatetimeTimePicker = {render: function(){var _vm=this;var _h=_vm.$createElem
 
       return hours(this.hourStep).filter(function (hour) {
         if (!this$1.use12Hour) {
-          console.log(this$1.startHour);
-          console.log(this$1.endHour);
           if (this$1.startHour && this$1.endHour) {
             return this$1.checkHour(hour)
           } else {
