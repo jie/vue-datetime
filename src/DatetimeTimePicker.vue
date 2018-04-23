@@ -108,11 +108,9 @@ export default {
       } else {
         result = true
       }
-      console.log('result: ', result)
       return result
     },
     selectHour (hour) {
-      console.log('hour:', hour)
       if (hour.disabled) {
         return
       }

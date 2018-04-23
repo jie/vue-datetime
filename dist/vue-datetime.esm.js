@@ -315,11 +315,9 @@ var DatetimeTimePicker = {render: function(){var _vm=this;var _h=_vm.$createElem
       } else {
         result = true;
       }
-      console.log('result: ', result);
       return result
     },
     selectHour: function selectHour (hour) {
-      console.log('hour:', hour);
       if (hour.disabled) {
         return
       }
